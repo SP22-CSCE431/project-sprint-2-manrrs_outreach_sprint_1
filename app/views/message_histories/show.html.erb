@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Message id:</strong>
+  <%= @message_history.Message_ID %>
+</p>
+
+<p>
+  <strong>Date sent:</strong>
+  <%= @message_history.Date_Sent %>
+</p>
+
+<p>
+  <strong>Student id:</strong>
+  <%= @message_history.Student_ID %>
+</p>
+
+<%= link_to 'Edit', edit_message_history_path(@message_history) %> |
+<%= link_to 'Back', message_histories_path %>

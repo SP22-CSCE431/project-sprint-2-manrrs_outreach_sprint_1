@@ -1,0 +1,32 @@
+<%= form_with(model: message_history) do |form| %>
+  <% if message_history.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(message_history.errors.count, "error") %> prohibited this message_history from being saved:</h2>
+
+      <ul>
+        <% message_history.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Message_ID %>
+    <%= form.text_field :Message_ID %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Date_Sent %>
+    <%= form.date_select :Date_Sent %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Student_ID %>
+    <%= form.text_field :Student_ID %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

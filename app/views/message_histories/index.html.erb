@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Message Histories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Message id</th>
+      <th>Date sent</th>
+      <th>Student id</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @message_histories.each do |message_history| %>
+      <tr>
+        <td><%= message_history.Message_ID %></td>
+        <td><%= message_history.Date_Sent %></td>
+        <td><%= message_history.Student_ID %></td>
+        <td><%= link_to 'Show', message_history %></td>
+        <td><%= link_to 'Edit', edit_message_history_path(message_history) %></td>
+        <td><%= link_to 'Destroy', message_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Message History', new_message_history_path %>

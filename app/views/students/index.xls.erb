@@ -1,0 +1,17 @@
+<table border="1">
+  <tr>
+    <th>First</th>
+    <th>Last</th>
+    <th>Number</th>
+    <th>Email</th>
+    <th colspan="3"></th>
+  </tr>
+  <% @students.each do |student| %>
+      <tr>
+        <td><%= student.first %></td>
+        <td><%= student.last %></td>
+        <td><%= student.number %></td>
+        <td><%= student.email %></td>
+      </tr>
+  <% end %>
+</table>
