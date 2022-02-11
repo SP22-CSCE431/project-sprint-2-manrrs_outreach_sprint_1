@@ -1,22 +1,19 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[ show edit update destroy ]
 
-# GET /students or /students.json
-def index
-  @students = Student.order(:first)
-  respond_to do |format|
-    format.html
-    format.csv { send_data @students.to_csv }
-    format.xls 
+  # GET /students or /students.json
+  def index
+    @students = Student.all
+    respond_to do |format|
+      format.xlsx {
+        response.headers[
+          'Content-Disposition'
+        ] = "attachment; filename=students.xlsx"
+      }
+      format.html { render :index }
+    end
   end
-end
-
-def import
-  Student.import(params[:file])
-  redirect_to root_url, notice: "Students imported."
-  # TODO: switch to carrier wave for permanent storage
-end
-
+  
   # GET /students/1 or /students/1.json
   def show
   end
@@ -76,6 +73,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def student_params
-      params.require(:student).permit(:first, :last, :number, :email)
+      params.require(:student).permit(:Student_ID, :First_Name, :Last_Name, :Phone_Number, :Email)
     end
 end
