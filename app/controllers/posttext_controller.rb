@@ -11,7 +11,7 @@ class PosttextController < ApplicationController
 			File.open('/tmp/textmsg','w'){ |file|
 				file.write(params["textmsg"])
 			}
-			system("/test_app/send_text.py /tmp/textmsg")
+			system("python3 /csce431/messages_app/messages_app/test_app/send_text.py /tmp/textmsg")
 			redirect_to '/posttext'
 		end
 	end

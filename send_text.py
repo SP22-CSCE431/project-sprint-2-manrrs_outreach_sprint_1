@@ -55,10 +55,10 @@ Virgin Mobile           vmobl.com
 
 
 def sql_get_numbers():
-    query="select number from students"
+    query='select * from students'
     db_usr=os.environ['DATABASE_USER']#"test_app"
     db_pwd=os.environ['DATABASE_PASSWORD']#"test_password"
-    db_name="test_excel_development"
+    db_name="test_app_development"
     #setting up a .pgpass file to prevent psql from pompting us for a password
     os.system('echo \'localhost:*:'+db_name+':'+db_usr+':'+db_pwd+'\' > ~/.pgpass')
     #psql expects .pgpass to have the following permissions
@@ -71,7 +71,7 @@ def sql_get_numbers():
         #extract 10 digit numbers and put them in an array
         return re.findall(r'\b\d\d\d\d\d\d\d\d\d\d\b',raw)
         
-#only 10 carriers to worry about
+#only 10 carriers to worry aboutselect
 def main():
     assert len(sys.argv)==2
     msg=""
@@ -80,8 +80,9 @@ def main():
 
     if len(msg)==0:
         return
+    print(sql_get_numbers())
     send_text(sql_get_numbers(),msg)
-    # print(sql_get_numbers())
+    
 
 
 if __name__ == '__main__':
