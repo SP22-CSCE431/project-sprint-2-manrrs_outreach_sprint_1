@@ -80,7 +80,7 @@ def sql_get_numbers():
 def sql_store_msg(msg:str):
     assert type(msg)==str 
     msg=msg.replace("'","")
-    query="insert into messages(text,created_at,updated_at) values('"+msg+"',NOW(),NOW());"
+    query="insert into messages(text,date_created,created_at,updated_at) values('"+msg+"',NOW(),NOW(),NOW());"
     sql_exec(query)
         
 #only 10 carriers to worry aboutselect
