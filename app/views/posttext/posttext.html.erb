@@ -1,0 +1,57 @@
+<% print "ZZZZZZZZ: ",__FILE__,'\n'%>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+	<meta charset="utf-8">
+	<title>Full-Auto SMS</title>
+</head>
+<body>
+	<h1>Full-Auto SMS</h1>
+	<div name="error"></div>
+
+	<script>
+		let error_div=document.getElementsByName("error")[0]
+		if(window.location.search=='?failed=1'){
+			console.log("bruh")
+			error_div.appendChild(
+				document.createTextNode(`
+				message must be less than 160 characters
+				`)
+			)
+			error_div.style.color="red"
+		}
+		
+	</script>
+
+	Send a text
+	<form action="/posttext" method="GET" name="main">
+		<textarea name="textmsg" rows="4" cols="50" required></textarea>
+		<p>
+			<button>Send</button>
+		</p>
+	</form>
+
+	<div name="count">
+		
+	</div>
+	<script>
+		let count_div=document.getElementsByName("count")[0]
+		let textarea=document.getElementsByName("textmsg")[0]
+		
+		textarea.oninput=()=>{
+			count_div.innerText="character count: "+
+				textarea.textLength+" (max: 160)"
+		}
+	</script>
+
+	<p>
+		<a href="/students">Or add/remove phone numbers</a>
+	</p>
+	<p>
+		<!-- <a href="/logout">logout</a> -->
+	</p>
+</body>
+</html>
