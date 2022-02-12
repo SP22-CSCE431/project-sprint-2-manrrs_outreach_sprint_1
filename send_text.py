@@ -53,9 +53,8 @@ Verizon Wireless        vtext.com
 Virgin Mobile           vmobl.com   
 """ 
 
-
-def sql_get_numbers():
-    query='select * from students'
+def sql_exec(query:str):
+    assert type(query)==str
     db_usr=os.environ['DATABASE_USER']#"test_app"
     db_pwd=os.environ['DATABASE_PASSWORD']#"test_password"
     db_name="test_app_development"
@@ -64,15 +63,29 @@ def sql_get_numbers():
     #psql expects .pgpass to have the following permissions
     os.system('chmod 0600 ~/.pgpass')
     #pipe the query into psql and write the result to a temporary file
-    os.system('echo \''+query+';\' | psql -h localhost -U '+db_usr+' '+db_name+' > /tmp/tmp_query')
+    with open("/tmp/query.sql","w") as fd:
+        fd.write(query)
+    os.system('psql -f /tmp/query.sql -h localhost -U '+db_usr+' '+db_name+' > /tmp/tmp_query')
+
+
+def sql_get_numbers():
+    query='select * from students'
+    sql_exec(query)
     with open("/tmp/tmp_query") as fd:
         #read the query result from the temporary file
         raw=fd.read()
         #extract 10 digit numbers and put them in an array
         return re.findall(r'\b\d\d\d\d\d\d\d\d\d\d\b',raw)
+
+def sql_store_msg(msg:str):
+    assert type(msg)==str 
+    msg=msg.replace("'","")
+    query="insert into messages(text,created_at,updated_at) values('"+msg+"','2020-10-20','2020-10-20');"
+    sql_exec(query)
         
 #only 10 carriers to worry aboutselect
 def main():
+    print("ZZZZZZZZZ: send_text.py")
     assert len(sys.argv)==2
     msg=""
     with open(sys.argv[1]) as fd:
@@ -80,6 +93,7 @@ def main():
 
     if len(msg)==0:
         return
+    sql_store_msg(msg)
     print(sql_get_numbers())
     send_text(sql_get_numbers(),msg)
     
