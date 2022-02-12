@@ -14,5 +14,5 @@ Rails.application.routes.draw do
    get  "posttext",to:"posttext#posttext"
    get 'home/dashboard'
    get 'home/homepage'
-   root 'home#homepage'
+   root 'posttext#posttext'
 end
