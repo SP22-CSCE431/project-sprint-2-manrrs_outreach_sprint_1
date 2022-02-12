@@ -1,15 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  Text: MyString
-  Date_Created: 2022-02-08
-  Date_Sent: 2022-02-08
-  Admin_ID: 1
-  Message_ID: 1
+  admin_id: 
+  text: MyString
+  date_created: 2022-02-12
 
 two:
-  Text: MyString
-  Date_Created: 2022-02-08
-  Date_Sent: 2022-02-08
-  Admin_ID: 1
-  Message_ID: 1
+  admin_id: 
+  text: MyString
+  date_created: 2022-02-12

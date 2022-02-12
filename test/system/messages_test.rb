@@ -14,11 +14,9 @@ class MessagesTest < ApplicationSystemTestCase
     visit messages_url
     click_on "New Message"
 
-    fill_in "Admin id", with: @message.Admin_ID
-    fill_in "Date created", with: @message.Date_Created
-    fill_in "Date sent", with: @message.Date_Sent
-    fill_in "Message id", with: @message.Message_ID
-    fill_in "Text", with: @message.Text
+    fill_in "Admin", with: @message.admin_id
+    fill_in "Date created", with: @message.date_created
+    fill_in "Text", with: @message.text
     click_on "Create Message"
 
     assert_text "Message was successfully created"
@@ -29,11 +27,9 @@ class MessagesTest < ApplicationSystemTestCase
     visit messages_url
     click_on "Edit", match: :first
 
-    fill_in "Admin id", with: @message.Admin_ID
-    fill_in "Date created", with: @message.Date_Created
-    fill_in "Date sent", with: @message.Date_Sent
-    fill_in "Message id", with: @message.Message_ID
-    fill_in "Text", with: @message.Text
+    fill_in "Admin", with: @message.admin_id
+    fill_in "Date created", with: @message.date_created
+    fill_in "Text", with: @message.text
     click_on "Update Message"
 
     assert_text "Message was successfully updated"

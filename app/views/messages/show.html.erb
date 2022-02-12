@@ -1,28 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Admin:</strong>
+  <%= @message.admin_id %>
+</p>
+
+<p>
   <strong>Text:</strong>
-  <%= @message.Text %>
+  <%= @message.text %>
 </p>
 
 <p>
   <strong>Date created:</strong>
-  <%= @message.Date_Created %>
-</p>
-
-<p>
-  <strong>Date sent:</strong>
-  <%= @message.Date_Sent %>
-</p>
-
-<p>
-  <strong>Admin id:</strong>
-  <%= @message.Admin_ID %>
-</p>
-
-<p>
-  <strong>Message id:</strong>
-  <%= @message.Message_ID %>
+  <%= @message.date_created %>
 </p>
 
 <%= link_to 'Edit', edit_message_path(@message) %> |

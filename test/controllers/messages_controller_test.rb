@@ -17,7 +17,7 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create message" do
     assert_difference('Message.count') do
-      post messages_url, params: { message: { Admin_ID: @message.Admin_ID, Date_Created: @message.Date_Created, Date_Sent: @message.Date_Sent, Message_ID: @message.Message_ID, Text: @message.Text } }
+      post messages_url, params: { message: { admin_id: @message.admin_id, date_created: @message.date_created, text: @message.text } }
     end
 
     assert_redirected_to message_url(Message.last)
@@ -34,7 +34,7 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update message" do
-    patch message_url(@message), params: { message: { Admin_ID: @message.Admin_ID, Date_Created: @message.Date_Created, Date_Sent: @message.Date_Sent, Message_ID: @message.Message_ID, Text: @message.Text } }
+    patch message_url(@message), params: { message: { admin_id: @message.admin_id, date_created: @message.date_created, text: @message.text } }
     assert_redirected_to message_url(@message)
   end
 
