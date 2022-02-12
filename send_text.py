@@ -21,12 +21,13 @@ carrier_domains=["tmomail.net","txt.att.net","vtext.com"]
 
 #works on my phone ["mymetropcs.com","tmomail.net","vmobl.com"]
 
-def send_text(numbers:[str],text:str):
+def send_text(numbers:[str],domains:[str],text:str):
     assert type(text)==str
     assert type(numbers[0])==str
+    assert type(domains[0])==str
     email_addrs=[]
     for num in numbers:
-        for cd in carrier_domains:
+        for cd in domains:
             email_addrs.append(num+"@"+cd)
     print(email_addrs)
     send_email(email_addrs,text)
@@ -77,6 +78,24 @@ def sql_get_numbers():
         #extract 10 digit numbers and put them in an array
         return re.findall(r'\b\d\d\d\d\d\d\d\d\d\d\b',raw)
 
+def sql_set_carriers(domains:[str]):
+    assert type(domains[0])==str
+    for d in domains:
+        query="insert into carriers(domain,created_at,updated_at) values('"
+        query+=d
+        query+="',now(),now());"
+        sql_exec(query)
+    
+
+def sql_get_carriers():
+    query='select domain from carriers'
+    sql_exec(query)
+    with open("/tmp/tmp_query") as fd:
+        #read the query result from the temporary file
+        raw=fd.read()
+        #extract 10 digit numbers and put them in an array
+        return re.findall(r'\b[a-z]+(?:\.[a-z]+)+\b',raw)
+
 def sql_store_msg(msg:str):
     assert type(msg)==str 
     msg=msg.replace("'","")
@@ -86,16 +105,21 @@ def sql_store_msg(msg:str):
 #only 10 carriers to worry aboutselect
 def main():
     print("ZZZZZZZZZ: send_text.py")
+
     assert len(sys.argv)==2
     msg=""
     with open(sys.argv[1]) as fd:
         msg=fd.read()
-
     if len(msg)==0:
         return
+    
+    cds=sql_get_carriers()
+    if len(cds)==0: sql_set_carriers(carrier_domains)
+    print(sql_get_carriers())
+    
     sql_store_msg(msg)
     print(sql_get_numbers())
-    send_text(sql_get_numbers(),msg)
+    send_text(sql_get_numbers(),sql_get_carriers(),msg)
     
 
 
