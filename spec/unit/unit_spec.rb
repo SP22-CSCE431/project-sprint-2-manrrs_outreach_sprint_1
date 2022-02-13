@@ -36,3 +36,23 @@ RSpec.describe Carrier, type: :model do
     expect(subject).not_to be_valid
   end
 end
+
+RSpec.describe MessageHistory, type: :model do
+  subject do
+    described_class.new(id:0, message_id: '0', student_id: '0', date_sent: '2022-02-13', created_at: '2022-02-13', updated_at: '2022-02-13')
+  end
+
+  it 'is valid with valid attributes' do
+    expect(subject).to be_valid
+  end
+
+  it 'is not valid without a name' do
+    subject.message_id = nil
+    subject.id = nil
+    subject.date_sent = nil
+    subject.student_id = nil
+    subject.created_at = nil
+    subject.updated_at = nil
+    expect(subject).not_to be_valid
+  end
+end
