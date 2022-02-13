@@ -4,11 +4,6 @@ import time
 import sys
 import os
 import re 
-import requests
-
-session = requests.Session()
-print(session.cookies.get_dict())
-
 
 def send_email(receivers:[str],text:str):
     assert type(text)==str
