@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_12_030205) do
+ActiveRecord::Schema.define(version: 2022_02_13_050316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(version: 2022_02_12_030205) do
   end
 
   create_table "message_histories", force: :cascade do |t|
-    t.string "Message_ID"
-    t.date "Date_Sent"
-    t.string "Student_ID"
+    t.string "message_id"
+    t.date "date_sent"
+    t.string "student_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

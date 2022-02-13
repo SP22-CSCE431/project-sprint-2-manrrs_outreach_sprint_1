@@ -65,6 +65,6 @@ class MessageHistoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def message_history_params
-      params.require(:message_history).permit(:Message_ID, :Date_Sent, :Student_ID)
+      params.require(:message_history).permit(:message_id, :date_sent, :student_id)
     end
 end

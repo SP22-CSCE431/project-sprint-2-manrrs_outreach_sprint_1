@@ -14,9 +14,9 @@ class MessageHistoriesTest < ApplicationSystemTestCase
     visit message_histories_url
     click_on "New Message History"
 
-    fill_in "Date sent", with: @message_history.Date_Sent
-    fill_in "Message id", with: @message_history.Message_ID
-    fill_in "Student id", with: @message_history.Student_ID
+    fill_in "Date sent", with: @message_history.date_sent
+    fill_in "Message", with: @message_history.message_id
+    fill_in "Student", with: @message_history.student_id
     click_on "Create Message history"
 
     assert_text "Message history was successfully created"
@@ -27,9 +27,9 @@ class MessageHistoriesTest < ApplicationSystemTestCase
     visit message_histories_url
     click_on "Edit", match: :first
 
-    fill_in "Date sent", with: @message_history.Date_Sent
-    fill_in "Message id", with: @message_history.Message_ID
-    fill_in "Student id", with: @message_history.Student_ID
+    fill_in "Date sent", with: @message_history.date_sent
+    fill_in "Message", with: @message_history.message_id
+    fill_in "Student", with: @message_history.student_id
     click_on "Update Message history"
 
     assert_text "Message history was successfully updated"

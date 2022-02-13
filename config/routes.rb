@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :message_histories
   resources :messages
   resources :students
   resources :students_imports, only: [:new, :create]

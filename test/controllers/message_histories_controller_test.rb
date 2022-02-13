@@ -17,7 +17,7 @@ class MessageHistoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create message_history" do
     assert_difference('MessageHistory.count') do
-      post message_histories_url, params: { message_history: { Date_Sent: @message_history.Date_Sent, Message_ID: @message_history.Message_ID, Student_ID: @message_history.Student_ID } }
+      post message_histories_url, params: { message_history: { date_sent: @message_history.date_sent, message_id: @message_history.message_id, student_id: @message_history.student_id } }
     end
 
     assert_redirected_to message_history_url(MessageHistory.last)
@@ -34,7 +34,7 @@ class MessageHistoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update message_history" do
-    patch message_history_url(@message_history), params: { message_history: { Date_Sent: @message_history.Date_Sent, Message_ID: @message_history.Message_ID, Student_ID: @message_history.Student_ID } }
+    patch message_history_url(@message_history), params: { message_history: { date_sent: @message_history.date_sent, message_id: @message_history.message_id, student_id: @message_history.student_id } }
     assert_redirected_to message_history_url(@message_history)
   end
 

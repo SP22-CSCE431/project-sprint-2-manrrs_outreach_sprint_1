@@ -100,7 +100,9 @@ def sql_store_msg(msg:str):
     assert type(msg)==str 
     msg=msg.replace("'","")
     query="insert into messages(admin_id,text,date_created,created_at,updated_at) values('1','"+msg+"',NOW(),NOW(),NOW());"
+    query3="insert into message_histories (message_id, date_sent, student_id, created_at, updated_at) values('1', NOW(), '3', NOW(), NOW());"
     sql_exec(query)
+    sql_exec(query3)
         
 #only 10 carriers to worry aboutselect
 def main():
