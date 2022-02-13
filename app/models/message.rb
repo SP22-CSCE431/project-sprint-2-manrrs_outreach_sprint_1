@@ -1,4 +1,6 @@
 class Message < ApplicationRecord
-    belongs_to :User
+    validates :admin_id, presence: true
+    validates :text, presence: true
+    validates :date_created, presence: true
     has_many :student
 end
