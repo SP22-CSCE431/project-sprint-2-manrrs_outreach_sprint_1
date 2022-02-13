@@ -4,6 +4,8 @@ import time
 import sys
 import os
 import re 
+import requests
+
 
 def send_email(receivers:[str],text:str):
     assert type(text)==str
@@ -88,7 +90,7 @@ def sql_set_carriers(domains:[str]):
     
 
 def sql_get_carriers():
-    query='select domain from carriers'
+    query='select domain from carriers' 
     sql_exec(query)
     with open("/tmp/tmp_query") as fd:
         #read the query result from the temporary file
@@ -99,7 +101,7 @@ def sql_get_carriers():
 def sql_store_msg(msg:str):
     assert type(msg)==str 
     msg=msg.replace("'","")
-    query="insert into messages(text,date_created,created_at,updated_at) values('"+msg+"',NOW(),NOW(),NOW());"
+    query="insert into messages(admin_id,text,date_created,created_at,updated_at) values('1','"+msg+"',NOW(),NOW(),NOW());"
     sql_exec(query)
         
 #only 10 carriers to worry aboutselect
