@@ -104,7 +104,7 @@ def sql_get_student_ids():
         #read the query result from the temporary file
         raw=fd.read()
         #extract 10 digit numbers and put them in an array
-        return re.findall(r'\b\d+\b',raw)
+        return list(set(re.findall(r'\b\d+\b',raw)))
 
 def sql_get_max_message_id():
     query='select max(id) from messages'
@@ -120,13 +120,13 @@ def sql_store_msg(msg:str,admin_id:str):
     assert type(msg)==str 
     msg=msg.replace("'","")
     query="insert into messages(admin_id,text,date_created,created_at,updated_at) values('"+admin_id+"','"+msg+"',NOW(),NOW(),NOW());"
-    query3="insert into message_histories (message_id, date_sent, student_id, created_at, updated_at) "
-    query3+="values('"+str(int(sql_get_max_message_id())+1)+"', NOW(), '"
-    query3+=str(sql_get_student_ids()).replace(' ','').replace('[','').replace(']','').replace('\'','')
-    query3+="', NOW(), NOW());"
     sql_exec(query)
+    query3="insert into message_histories (message_id, date_sent, student_id, created_at, updated_at) "
+    query3+="values('"+str(int(sql_get_max_message_id()))+"', NOW(), '"
+    query3+=str(sql_get_student_ids()).replace(' ','').replace('[','').replace(']','').replace('\'','').replace('{','').replace('}','')
+    query3+="', NOW(), NOW());"
     sql_exec(query3)
-        
+
 #only 10 carriers to worry aboutselect
 def main():
     print("ZZZZZZZZZ: send_text.py")
