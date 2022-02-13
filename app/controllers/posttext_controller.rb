@@ -13,9 +13,6 @@ class PosttextController < ApplicationController
 			}
 			puts %x(pwd)
 			res=system("python3 ./send_text.py /tmp/textmsg "+cookies["username"].to_s)
-			if res!=0 
-				puts "XXXXXXXXX: failed to execute system"
-			end
 			redirect_to '/posttext'
 		end
 	end
