@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/MANRRS/spec/feature/integration_spec.rb": {
+      "/csce431/messages_app/test_app/spec/feature/integration_spec.rb": {
         "lines": [
           null,
           1,
@@ -40,7 +40,7 @@
           null
         ]
       },
-      "/MANRRS/spec/rails_helper.rb": {
+      "/csce431/messages_app/test_app/spec/rails_helper.rb": {
         "lines": [
           null,
           1,
@@ -108,7 +108,7 @@
           null
         ]
       },
-      "/MANRRS/config/environment.rb": {
+      "/csce431/messages_app/test_app/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -117,7 +117,7 @@
           1
         ]
       },
-      "/MANRRS/config/application.rb": {
+      "/csce431/messages_app/test_app/config/application.rb": {
         "lines": [
           1,
           1,
@@ -144,7 +144,7 @@
           null
         ]
       },
-      "/MANRRS/config/boot.rb": {
+      "/csce431/messages_app/test_app/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -152,7 +152,7 @@
           1
         ]
       },
-      "/MANRRS/config/environments/test.rb": {
+      "/csce431/messages_app/test_app/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -216,7 +216,7 @@
           null
         ]
       },
-      "/MANRRS/config/initializers/application_controller_renderer.rb": {
+      "/csce431/messages_app/test_app/config/initializers/application_controller_renderer.rb": {
         "lines": [
           null,
           null,
@@ -228,7 +228,7 @@
           null
         ]
       },
-      "/MANRRS/config/initializers/assets.rb": {
+      "/csce431/messages_app/test_app/config/initializers/assets.rb": {
         "lines": [
           null,
           null,
@@ -246,7 +246,7 @@
           null
         ]
       },
-      "/MANRRS/config/initializers/backtrace_silencers.rb": {
+      "/csce431/messages_app/test_app/config/initializers/backtrace_silencers.rb": {
         "lines": [
           null,
           null,
@@ -258,7 +258,7 @@
           1
         ]
       },
-      "/MANRRS/config/initializers/content_security_policy.rb": {
+      "/csce431/messages_app/test_app/config/initializers/content_security_policy.rb": {
         "lines": [
           null,
           null,
@@ -292,7 +292,7 @@
           null
         ]
       },
-      "/MANRRS/config/initializers/cookies_serializer.rb": {
+      "/csce431/messages_app/test_app/config/initializers/cookies_serializer.rb": {
         "lines": [
           null,
           null,
@@ -301,7 +301,7 @@
           1
         ]
       },
-      "/MANRRS/config/initializers/devise.rb": {
+      "/csce431/messages_app/test_app/config/initializers/devise.rb": {
         "lines": [
           null,
           null,
@@ -616,7 +616,7 @@
           null
         ]
       },
-      "/MANRRS/config/initializers/filter_parameter_logging.rb": {
+      "/csce431/messages_app/test_app/config/initializers/filter_parameter_logging.rb": {
         "lines": [
           null,
           null,
@@ -626,7 +626,7 @@
           null
         ]
       },
-      "/MANRRS/config/initializers/inflections.rb": {
+      "/csce431/messages_app/test_app/config/initializers/inflections.rb": {
         "lines": [
           null,
           null,
@@ -646,7 +646,7 @@
           null
         ]
       },
-      "/MANRRS/config/initializers/mime_types.rb": {
+      "/csce431/messages_app/test_app/config/initializers/mime_types.rb": {
         "lines": [
           null,
           null,
@@ -657,7 +657,7 @@
           null
         ]
       },
-      "/MANRRS/config/initializers/permissions_policy.rb": {
+      "/csce431/messages_app/test_app/config/initializers/permissions_policy.rb": {
         "lines": [
           null,
           null,
@@ -672,7 +672,7 @@
           null
         ]
       },
-      "/MANRRS/config/initializers/wrap_parameters.rb": {
+      "/csce431/messages_app/test_app/config/initializers/wrap_parameters.rb": {
         "lines": [
           null,
           null,
@@ -690,7 +690,7 @@
           null
         ]
       },
-      "/MANRRS/config/routes.rb": {
+      "/csce431/messages_app/test_app/config/routes.rb": {
         "lines": [
           1,
           null,
@@ -713,7 +713,7 @@
           null
         ]
       },
-      "/MANRRS/app/models/user.rb": {
+      "/csce431/messages_app/test_app/app/models/user.rb": {
         "lines": [
           1,
           null,
@@ -725,7 +725,7 @@
           null
         ]
       },
-      "/MANRRS/app/models/application_record.rb": {
+      "/csce431/messages_app/test_app/app/models/application_record.rb": {
         "lines": [
           1,
           1,
@@ -733,43 +733,43 @@
           null
         ]
       },
-      "/MANRRS/app/helpers/application_helper.rb": {
+      "/csce431/messages_app/test_app/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/MANRRS/app/helpers/carriers_helper.rb": {
+      "/csce431/messages_app/test_app/app/helpers/carriers_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/MANRRS/app/helpers/message_histories_helper.rb": {
+      "/csce431/messages_app/test_app/app/helpers/message_histories_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/MANRRS/app/helpers/messages_helper.rb": {
+      "/csce431/messages_app/test_app/app/helpers/messages_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/MANRRS/app/helpers/students_helper.rb": {
+      "/csce431/messages_app/test_app/app/helpers/students_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/MANRRS/app/helpers/students_imports_helper.rb": {
+      "/csce431/messages_app/test_app/app/helpers/students_imports_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/MANRRS/spec/unit/unit_spec.rb": {
+      "/csce431/messages_app/test_app/spec/unit/unit_spec.rb": {
         "lines": [
           null,
           1,
@@ -786,6 +786,11 @@
           1,
           1,
           1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
           null,
@@ -806,7 +811,7 @@
           null
         ]
       },
-      "/MANRRS/app/models/message.rb": {
+      "/csce431/messages_app/test_app/app/models/message.rb": {
         "lines": [
           1,
           1,
@@ -816,14 +821,14 @@
           null
         ]
       },
-      "/MANRRS/app/models/carrier.rb": {
+      "/csce431/messages_app/test_app/app/models/carrier.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/MANRRS/app/controllers/carriers_controller.rb": {
+      "/csce431/messages_app/test_app/app/controllers/carriers_controller.rb": {
         "lines": [
           1,
           1,
@@ -897,7 +902,7 @@
           null
         ]
       },
-      "/MANRRS/app/controllers/application_controller.rb": {
+      "/csce431/messages_app/test_app/app/controllers/application_controller.rb": {
         "lines": [
           1,
           1,
@@ -910,6 +915,6 @@
         ]
       }
     },
-    "timestamp": 1644748199
+    "timestamp": 1644748138
   }
 }

@@ -12,6 +12,11 @@ RSpec.describe Message, type: :model do
 
   it 'is not valid without a name' do
     subject.text = nil
+    subject.id = nil
+    subject.date_created = nil
+    subject.admin_id = nil
+    subject.created_at = nil
+    subject.updated_at = nil
     expect(subject).not_to be_valid
   end
 end
