@@ -27,9 +27,9 @@ class CarriersController < ApplicationController
       if @carrier.save
         format.html { redirect_to carrier_url(@carrier), notice: "Carrier was successfully created." }
         format.json { render :show, status: :created, location: @carrier }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @carrier.errors, status: :unprocessable_entity }
+      # else
+      #   format.html { render :new, status: :unprocessable_entity }
+      #   format.json { render json: @carrier.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -40,9 +40,9 @@ class CarriersController < ApplicationController
       if @carrier.update(carrier_params)
         format.html { redirect_to carrier_url(@carrier), notice: "Carrier was successfully updated." }
         format.json { render :show, status: :ok, location: @carrier }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @carrier.errors, status: :unprocessable_entity }
+      # else
+      #   format.html { render :edit, status: :unprocessable_entity }
+      #   format.json { render json: @carrier.errors, status: :unprocessable_entity }
       end
     end
   end
