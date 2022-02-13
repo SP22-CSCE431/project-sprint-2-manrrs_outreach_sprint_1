@@ -93,14 +93,28 @@ def sql_get_carriers():
     with open("/tmp/tmp_query") as fd:
         #read the query result from the temporary file
         raw=fd.read()
-        #extract 10 digit numbers and put them in an array
+        #extract domain names and put them in an array
         return re.findall(r'\b[a-z]+(?:\.[a-z]+)+\b',raw)
+
+
+def sql_get_student_ids():
+    query='select id from students'
+    sql_exec(query)
+    with open("/tmp/tmp_query") as fd:
+        #read the query result from the temporary file
+        raw=fd.read()
+        #extract 10 digit numbers and put them in an array
+        return re.findall(r'\b\d+\b',raw)
+
 
 def sql_store_msg(msg:str,admin_id:str):
     assert type(msg)==str 
     msg=msg.replace("'","")
     query="insert into messages(admin_id,text,date_created,created_at,updated_at) values('"+admin_id+"','"+msg+"',NOW(),NOW(),NOW());"
-    query3="insert into message_histories (message_id, date_sent, student_id, created_at, updated_at) values('1', NOW(), '3', NOW(), NOW());"
+    query3="insert into message_histories (message_id, date_sent, student_id, created_at, updated_at) "
+    query3+="values('1', NOW(), '"
+    query3+=str(sql_get_student_ids()).replace(' ','').replace('[','').replace(']','').replace('\'','')
+    query3+="', NOW(), NOW());"
     sql_exec(query)
     sql_exec(query3)
         
