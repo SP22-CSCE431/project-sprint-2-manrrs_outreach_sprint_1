@@ -28,7 +28,7 @@
 
 	Send a text
 	<form action="/posttext" method="GET" name="main">
-		<textarea name="textmsg" rows="4" cols="50" required></textarea>
+		<textarea name="textmsg" id="textmsg" rows="4" cols="50" required></textarea>
 		<p>
 			<button>Send</button>
 		</p>
@@ -49,6 +49,9 @@
 
 	<p>
 		<a href="/students">Or add/remove phone numbers</a>
+	</p>
+	<p>
+		<a href="/messages">View all messages</a>
 	</p>
 	<p>
 		<!-- <a href="/logout">logout</a> -->
