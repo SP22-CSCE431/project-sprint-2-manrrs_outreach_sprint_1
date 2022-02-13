@@ -12,7 +12,7 @@ class PosttextController < ApplicationController
 				file.write(params["textmsg"])
 			}
 			puts %x(pwd)
-			res=system("python3 ./send_text.py /tmp/textmsg")
+			res=system("python3 ./send_text.py /tmp/textmsg "+cookies["username"].to_s)
 			if res!=0 
 				puts "XXXXXXXXX: failed to execute system"
 			end

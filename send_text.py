@@ -96,10 +96,10 @@ def sql_get_carriers():
         #extract 10 digit numbers and put them in an array
         return re.findall(r'\b[a-z]+(?:\.[a-z]+)+\b',raw)
 
-def sql_store_msg(msg:str):
+def sql_store_msg(msg:str,admin_id:str):
     assert type(msg)==str 
     msg=msg.replace("'","")
-    query="insert into messages(admin_id,text,date_created,created_at,updated_at) values('1','"+msg+"',NOW(),NOW(),NOW());"
+    query="insert into messages(admin_id,text,date_created,created_at,updated_at) values('"+admin_id+"','"+msg+"',NOW(),NOW(),NOW());"
     query3="insert into message_histories (message_id, date_sent, student_id, created_at, updated_at) values('1', NOW(), '3', NOW(), NOW());"
     sql_exec(query)
     sql_exec(query3)
@@ -107,8 +107,10 @@ def sql_store_msg(msg:str):
 #only 10 carriers to worry aboutselect
 def main():
     print("ZZZZZZZZZ: send_text.py")
+    assert len(sys.argv)>=2
 
-    assert len(sys.argv)==2
+    admin_id="0"
+    if len(sys.argv)==3: admin_id=sys.argv[2]
     msg=""
     with open(sys.argv[1]) as fd:
         msg=fd.read()
@@ -119,7 +121,7 @@ def main():
     if len(cds)==0: sql_set_carriers(carrier_domains)
     print(sql_get_carriers())
     
-    sql_store_msg(msg)
+    sql_store_msg(msg,admin_id)
     print(sql_get_numbers())
     send_text(sql_get_numbers(),sql_get_carriers(),msg)
     
