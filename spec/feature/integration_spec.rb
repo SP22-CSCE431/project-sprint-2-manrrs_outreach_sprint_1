@@ -15,3 +15,21 @@ RSpec.describe 'Creating a message', type: :feature do
     expect(page).to have_content('123123123')
   end
 end
+
+RSpec.describe 'adding a new carrier', type: :feature do
+  scenario 'valid inputs' do
+    visit new_carrier_path
+    fill_in 'Domain', with: 'sms.myboostmobile.com'
+    click_on 'Create Carrier'
+    visit carriers_path
+    expect(page).to have_content('sms.myboostmobile.com')
+    click_on 'Edit'
+    fill_in 'Domain', with: 'mms.cricketwireless.net'
+    click_on 'Update Carrier'
+    visit carriers_path
+    expect(page).to have_content('mms.cricketwireless.net')
+    click_on 'Destroy'
+    # click_on 'OK'
+    expect(page).to have_no_content('mms.cricketwireless.net')
+  end
+end
