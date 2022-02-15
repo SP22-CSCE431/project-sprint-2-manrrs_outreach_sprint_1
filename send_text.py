@@ -56,17 +56,20 @@ Virgin Mobile           vmobl.com
 
 def sql_exec(query:str):
     assert type(query)==str
-    db_usr="test_app" #os.environ['DATABASE_USER']#"test_app"
-    db_pwd="test_password" #os.environ['DATABASE_PASSWORD']#
-    db_name="test_app_development"
+    db_usr="gyuphobxyrglnx" #os.environ['DATABASE_USER']#"test_app"
+    db_pwd="6266bef5056bb59d2bba8fd3a50fc30987795a2004a3d38bd1ce8321e5e3166f"
+    #"test_password" #os.environ['DATABASE_PASSWORD']#
+    db_name="dfq39rnativju7"
+    #"test_app_development"
+    db_domain="ec2-54-209-221-231.compute-1.amazonaws.com"
     #setting up a .pgpass file to prevent psql from pompting us for a password
-    os.system('echo \'localhost:*:'+db_name+':'+db_usr+':'+db_pwd+'\' > ~/.pgpass')
+    os.system('echo \''+db_domain+':*:'+db_name+':'+db_usr+':'+db_pwd+'\' > ~/.pgpass')
     #psql expects .pgpass to have the following permissions
     os.system('chmod 0600 ~/.pgpass')
     #pipe the query into psql and write the result to a temporary file
     with open("/tmp/query.sql","w") as fd:
         fd.write(query)
-    os.system('psql -f /tmp/query.sql -h localhost -U '+db_usr+' '+db_name+' > /tmp/tmp_query')
+    os.system('psql -f /tmp/query.sql -h '+db_domain+' -U '+db_usr+' '+db_name+' > /tmp/tmp_query')
 
 
 def sql_get_numbers():
