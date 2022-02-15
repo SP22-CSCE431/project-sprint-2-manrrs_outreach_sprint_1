@@ -113,6 +113,8 @@ def sql_get_max_message_id():
         #read the query result from the temporary file
         raw=fd.read()
         #extract 10 digit numbers and put them in an array
+        arr=re.findall(r'\b\d+\b',raw)[0]
+        if len(arr)==0: return 0
         return re.findall(r'\b\d+\b',raw)[0]
 
 
