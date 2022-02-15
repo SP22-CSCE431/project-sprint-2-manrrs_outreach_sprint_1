@@ -56,8 +56,8 @@ Virgin Mobile           vmobl.com
 
 def sql_exec(query:str):
     assert type(query)==str
-    db_usr=os.environ['DATABASE_USER']#"test_app"
-    db_pwd=os.environ['DATABASE_PASSWORD']#"test_password"
+    db_usr="test_app" #os.environ['DATABASE_USER']#"test_app"
+    db_pwd="test_password" #os.environ['DATABASE_PASSWORD']#
     db_name="test_app_development"
     #setting up a .pgpass file to prevent psql from pompting us for a password
     os.system('echo \'localhost:*:'+db_name+':'+db_usr+':'+db_pwd+'\' > ~/.pgpass')
