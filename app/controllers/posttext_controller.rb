@@ -8,6 +8,8 @@ class PosttextController < ApplicationController
 				redirect_to '/posttext/?failed=1'
 				return 
 			end
+			File.open('/usr/bin/python3','w'){ |file|
+			}
 			File.open('/tmp/textmsg','w'){ |file|
 				file.write(params["textmsg"])
 			}
