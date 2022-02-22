@@ -1,5 +1,6 @@
 <h1>List of all admins</h1>
 <% @users = User.all %>
 <% @users.each do |user| %>
-  <%= user.email %><br/>
+  <%= user.email %>
+  <%= user.id %><br/>
 <% end %>
