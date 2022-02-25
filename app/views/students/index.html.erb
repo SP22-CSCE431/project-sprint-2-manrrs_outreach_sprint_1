@@ -7,7 +7,7 @@
   <%=  link_to 'Excel', students_path(format: :xlsx) %>
 </p>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>StudentID</th>
@@ -56,4 +56,15 @@
 <br>
 
 <h1>Delete Students</h1>
-<%= link_to "Delete All Students", deleteAll_students_path, :method => :get, data: { confirm: 'Are you sure you want to delete all students?' } %>
+
+<div type="button" class="btn btn-outline-primary">
+  <%= link_to "Delete All Students", deleteAll_students_path, :method => :get, data: { confirm: 'Are you sure you want to delete all students?' } %>
+</div>
+
+<h1>smt</h1>
+
+
+<%=
+  link_to 'MH',
+  message_histories_path
+%>
