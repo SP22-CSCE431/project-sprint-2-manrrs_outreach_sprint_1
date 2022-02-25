@@ -23,9 +23,19 @@ class StudentsController < ApplicationController
     @student = Student.new
   end
 
+  # # GET /students/deleteAll
+  def deleteAll
+    Student.delete_all
+    # flash[:notice] = "You have removed all students!"
+    redirect_to students_url
+  end
+
   # GET /students/1/edit
   def edit
   end
+
+
+
 
   # POST /students or /students.json
   def create
@@ -67,6 +77,7 @@ class StudentsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
     def set_student
       @student = Student.find(params[:id])
     end
