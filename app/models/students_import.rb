@@ -30,7 +30,8 @@ class StudentsImport
         row = Hash[[header, spreadsheet.row(i)].transpose]
 
         # NOTE: Currently removing duplicates from Student_ID and not phone number
-        student = Student.find_by_Student_ID(row["Student_ID"]) || Student.new
+        student = Student.find_by_Phone_Number(row["Phone_Number"]) || Student.new
+        # used to be Student_ID
 
         student.attributes = row.to_hash
         student

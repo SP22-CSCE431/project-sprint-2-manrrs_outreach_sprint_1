@@ -1,70 +1,139 @@
-<p id="notice"><%= notice %></p>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Students</title>
+</head>
+<body id="body-pd">
 
-<h1>Students</h1>
+  <br>
+  <br>
+  <br>
 
-<p>
-  Download:
-  <%=  link_to 'Excel', students_path(format: :xlsx) %>
-</p>
+  <header class="header" id="header">
+      <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+      <div class=""> <i class='bx' id=""></i> <span class="nav_name"> <%= current_user.email %> </span> </div>
+  </header>
+  <div class="l-navbar" id="nav-bar">
+      <nav class="nav">
+          <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">MANRRS Outreach</span> </a>
+              <div class="nav_list">
+                <a href="/posttext" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Compose</span> </a> 
+                <a href="/students" class="nav_link active"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Students</span> </a> 
+                <a href="/message_histories" class="nav_link"> <i class='bx bx-history nav_icon'></i> <span class="nav_name">History</span> </a> 
+                <a href="/users/edit" class="nav_link"> <i class='bx bx-user-circle nav_icon'></i> <span class="nav_name">Account</span> </a>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>StudentID</th>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Phone number</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+                <a href="#" class="nav_link"> 
+                <i class='bx bx-help-circle nav_icon'></i> 
+                <span class="nav_name">Help & Support</span> 
+                </a>  
 
-  <tbody>
-    <% @students.each do |student| %>
+              </div>
+          </div> 
+ 
+          <%# TODO: Fix Text Linking %>
+          <div class="nav_link" style="text-decorations:none;"><%= link_to '<i class="bx bx-log-out nav_icon" style="color:white;"></i>'.html_safe, destroy_user_session_path, method: :delete  %><span class="nav_name">SignOut</span></div>
+
+      </nav>
+  </div>
+
+  <br>
+
+  <h1>Students</h1>
+  <%# TODO: add number of students %>
+
+  <div type="button" class="btn btn-primary">
+    <%= link_to 'Add', new_student_path %>
+  </div>
+
+  <div type="button" class="btn btn-primary">
+    <%=  link_to 'Download', students_path(format: :xlsx) %>
+  </div>
+
+  <div type="button" class="btn btn-primary">
+    <%= link_to 'Upload', new_students_import_path %>
+  </div>
+
+  <br>
+  <br>
+
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= student.Student_ID %></td>
-        <td><%= student.First_Name %></td>
-        <td><%= student.Last_Name %></td>
-        <td><%= student.Phone_Number %></td>
-        <td><%= student.Email %></td>
-        <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete %></td>
+        <th>StudentID</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Phone number</th>
+        <th>Email</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= student.id %></td>
+          <%# <td><%= student.Student_ID</td> %>
+          <td><%= student.First_Name %></td>
+          <td><%= student.Last_Name %></td>
+          <td><%= student.Phone_Number %></td>
+          <td><%= student.Email %></td>
+          <td><%= link_to '<i class="bx bx-search nav_icon"></i>'.html_safe, student %></td>
+          <td><%= link_to '<i class="bx bx-pencil nav_icon"></i>'.html_safe, edit_student_path(student) %></td>
+          <td><%= link_to '<i class="bx bx-trash nav_icon"></i>'.html_safe, student, method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<br>
-<%= link_to 'New Student', new_student_path %>
-<br>
-<br>
-<a href="/posttext">
-  <h1>Send a Text</h1>
-</a>
-<br>
+  <br>
 
-<h1>Import Students</h1>
+  <div type="button" class="btn btn-primary">
+    <%= link_to "Delete All Students", deleteAll_students_path, :method => :get,
+    data: { confirm: 'Are you sure you want to delete all students?' } %>
+  </div>
 
-<%=
-  link_to 'Upload from Excel',
-  new_students_import_path
-%>
+</body>
+</html>
 
-<br>
-<br>
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
 
-<h1>Delete Students</h1>
-
-<div type="button" class="btn btn-outline-primary">
-  <%= link_to "Delete All Students", deleteAll_students_path, :method => :get, data: { confirm: 'Are you sure you want to delete all students?' } %>
-</div>
-
-<h1>smt</h1>
-
-
-<%=
-  link_to 'MH',
-  message_histories_path
-%>
+    const showNavbar = (toggleId, navId, bodyId, headerId) =>{
+    const toggle = document.getElementById(toggleId),
+    nav = document.getElementById(navId),
+    bodypd = document.getElementById(bodyId),
+    headerpd = document.getElementById(headerId)
+    
+    // Validate that all variables exist
+    if(toggle && nav && bodypd && headerpd){
+    toggle.addEventListener('click', ()=>{
+    // show navbar
+    nav.classList.toggle('show')
+    // change icon
+    toggle.classList.toggle('bx-x')
+    // add padding to body
+    bodypd.classList.toggle('body-pd')
+    // add padding to header
+    headerpd.classList.toggle('body-pd')
+    })
+    }
+    }
+    
+    showNavbar('header-toggle','nav-bar','body-pd','header')
+    
+    /*===== LINK ACTIVE =====*/
+    const linkColor = document.querySelectorAll('.nav_link')
+    
+    function colorLink(){
+    if(linkColor){
+    linkColor.forEach(l=> l.classList.remove('active'))
+    this.classList.add('active')
+    }
+    }
+    linkColor.forEach(l=> l.addEventListener('click', colorLink))
+    
+    // Your code to run since DOM is loaded and ready
+});
+</script>
