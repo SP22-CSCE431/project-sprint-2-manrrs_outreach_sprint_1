@@ -4,7 +4,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up</title>
+  <%# <style>
+
+    #Myid{
+      display:none;
+    }
+    .hide{
+      display: block;
+    }
+
+    .display{
+      display: none;
+    }
+  </style> %>
 </head>
+
 <body class="body-sec">
     
   <section class="vh-100 gradient-custom">
@@ -44,10 +58,18 @@
                     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
                   </div>
 
+                  <div class="field">
+                    <label>Enter the admin secret key to sign up<label>
+                    <input id="input">
+                    <button type="button" onclick="myFunction()">sumbit</button>
+ 
+                  </div>
+
                   <br>
 
                   <div class="actions">
-                    <%= f.submit "Sign up" %>
+                    <p id = Myid style='display: none'> <%= f.submit "Sign up" %> </p>
+                 
                   </div>
 
                 <% end %>
@@ -66,9 +88,20 @@
   </section>
 
 </body>
+
+<script>
+function myFunction(){
+
+  var x = document.getElementById("Myid");
+  var userInput = document.getElementById("input");
+  const secretKey = "key123!"
+  if (x.style.display === "none" && userInput.value == secretKey) {
+    x.style.display = "block";
+}
+}
+</script>
+
 </html>
-
-
 
 
 
