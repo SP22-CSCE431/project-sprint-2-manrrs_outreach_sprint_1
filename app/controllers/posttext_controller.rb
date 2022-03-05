@@ -13,8 +13,11 @@ class PosttextController < ApplicationController
 			File.open('/tmp/textmsg','w'){ |file|
 				file.write(params["textmsg"])
 			}
+			File.open('/tmp/cookie','w'){ |file|
+				file.write(cookies["username"])
+			}
 			# puts %x(pwd)
-			res=system("python3 ./send_text.py /tmp/textmsg "+cookies["username"].to_s)
+			res=system("python3 ./send_text.py /tmp/textmsg /tmp/cookie")
 			redirect_to '/posttext'
 		end
 	end

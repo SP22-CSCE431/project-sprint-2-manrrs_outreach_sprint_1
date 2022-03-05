@@ -140,7 +140,10 @@ def main():
     assert len(sys.argv)>=2
 
     admin_id="0"
-    if len(sys.argv)==3: admin_id=sys.argv[2]
+    if len(sys.argv)==3: 
+        with open(sys.argv[2]) as fd:
+            admin_id=fd.read()
+        
     msg=""
     with open(sys.argv[1]) as fd:
         msg=fd.read()
