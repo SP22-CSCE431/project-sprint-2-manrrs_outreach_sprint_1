@@ -107,7 +107,9 @@ def sql_get_student_ids():
         #read the query result from the temporary file
         raw=fd.read()
         #extract 10 digit numbers and put them in an array
-        return list(set(re.findall(r'\b\d+\b',raw)))
+        nums=re.findall(r'\b\d+\b',raw)
+        if len(nums)>1: del nums[-1]
+        return nums;
 
 def sql_get_max_message_id():
     query='select max(id) from messages'
